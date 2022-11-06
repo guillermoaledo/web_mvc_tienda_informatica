@@ -6,7 +6,7 @@
 Redirigiendo. Por favor, espere...
 
 <%
-   response.sendRedirect("/tienda_informatica/fabricantes");
+   response.sendRedirect("/tienda_informatica/productos");
 %>
 </body>
 </html>
