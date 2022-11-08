@@ -41,9 +41,8 @@
 		</div>
 		<div class="clearfix">
 			<div style="float: left;width: 20%">Código</div>
-			<div style="float: left;width: 20%">Nombre</div>
-			<div style="float: left;width: 20%">Precio</div>
-			<div style="float: left;width: 20%">Codigo Fabricante</div>
+			<div style="float: left;width: 30%">Nombre</div>
+			<div style="float: left;width: 25%">Precio</div>
 			<div style="float: none;width: auto;overflow: hidden;">Acción</div>
 		</div>
 		<div class="clearfix">
@@ -58,9 +57,8 @@
 
 		<div style="margin-top: 6px;" class="clearfix">
 			<div style="float: left;width: 20%"><%= producto.getCodigo()%></div>
-			<div style="float: left;width: 20%"><%= producto.getNombre()%></div>
-			<div style="float: left;width: 20%"><%= producto.getPrecio()%></div>
-			<div style="float: left;width: 20%"><%= producto.getCodigo_fabricante()%></div>
+			<div style="float: left;width: 30%"><%= producto.getNombre()%></div>
+			<div style="float: left;width: 25%"><%= producto.getPrecio()%></div>
 			<div style="float: none;width: auto;overflow: hidden;">
 				<form action="/tienda_informatica/productos/<%= producto.getCodigo()%>" style="display: inline;">
     				<input type="submit" value="Ver Detalle" />

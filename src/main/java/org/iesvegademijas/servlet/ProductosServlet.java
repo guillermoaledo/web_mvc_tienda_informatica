@@ -13,6 +13,7 @@ import org.iesvegademijas.dao.ProductoDAO;
 import org.iesvegademijas.dao.ProductoDAOImpl;
 import org.iesvegademijas.model.Producto;
 
+//@WebServlet("/productos/*") 
 public class ProductosServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

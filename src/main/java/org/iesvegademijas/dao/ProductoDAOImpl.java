@@ -31,7 +31,7 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
                    
             int rows = ps.executeUpdate();
             if (rows == 0) 
-            	System.out.println("INSERT de fabricante con 0 filas insertadas.");
+            	System.out.println("INSERT de producto con 0 filas insertadas.");
             
             rsGenKeys = ps.getGeneratedKeys();
             if (rsGenKeys.next()) 
@@ -113,7 +113,8 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
         		prod.setCodigo(rs.getInt(idx++));
         		prod.setNombre(rs.getString(idx));
         		prod.setPrecio(rs.getDouble(idx++));
-        		prod.setCodigo_fabricante(rs.getInt(idx));
+        		prod.setCodigo_fabricante(rs.getInt(idx++));
+        		prod.setCodigo(rs.getInt(idx));
         		
         		return Optional.of(prod);
         	}
@@ -145,9 +146,7 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
         	ps = conn.prepareStatement("UPDATE producto SET nombre = ?  WHERE codigo = ?");
         	int idx = 1;
         	ps.setString(idx++, producto.getNombre());
-        	ps.setInt(idx++, producto.getCodigo());
-        	ps.setDouble(idx++, producto.getPrecio());
-        	ps.setInt(idx, producto.getCodigo_fabricante());
+        	ps.setInt(idx, producto.getCodigo());
         	
         	int rows = ps.executeUpdate();
         	

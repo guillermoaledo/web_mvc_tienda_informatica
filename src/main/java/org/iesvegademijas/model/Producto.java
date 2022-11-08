@@ -1,5 +1,7 @@
 package org.iesvegademijas.model;
 
+import java.util.Objects;
+
 public class Producto {
 
 	private int codigo;
@@ -7,6 +9,26 @@ public class Producto {
 	private double precio;
 	private int codigo_fabricante;
 	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigo, codigo_fabricante, nombre, precio);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Producto other = (Producto) obj;
+		return codigo == other.codigo && codigo_fabricante == other.codigo_fabricante
+				&& Objects.equals(nombre, other.nombre)
+				&& Double.doubleToLongBits(precio) == Double.doubleToLongBits(other.precio);
+	}
+
 	public double getPrecio() {
 		return precio;
 	}
