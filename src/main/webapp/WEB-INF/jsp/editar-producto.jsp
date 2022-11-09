@@ -58,22 +58,22 @@
 				<input name="nombre" value="<%= optProd.get().getNombre() %>"/>
 			</div> 
 		</div>
-		<div style="margin-top: 6px;" class="clearfix">
-			<div style="float: left;width: 50%">
-				<label>Precio</label>
-			</div>
-			<div style="float: none;width: auto;overflow: hidden;">
-				<input name="nombre" value="<%= optProd.get().getPrecio() %>"/>
-			</div> 
-		</div>
-		<div style="margin-top: 6px;" class="clearfix">
-			<div style="float: left;width: 50%">
-				<label>Codigo Fabricante</label>
-			</div>
-			<div style="float: none;width: auto;overflow: hidden;">
-				<input name="nombre" value="<%= optProd.get().getCodigo_fabricante() %>"/>
-			</div> 
-		</div>
+<!-- 		<div style="margin-top: 6px;" class="clearfix"> -->
+<!-- 			<div style="float: left;width: 50%"> -->
+<!-- 				<label>Precio</label> -->
+<!-- 			</div> -->
+<!-- 			<div style="float: none;width: auto;overflow: hidden;"> -->
+<%-- 				<input name="nombre" value="<%= optProd.get().getPrecio() %>"/> --%>
+<!-- 			</div>  -->
+<!-- 		</div> -->
+<!-- 		<div style="margin-top: 6px;" class="clearfix"> -->
+<!-- 			<div style="float: left;width: 50%"> -->
+<!-- 				<label>Codigo Fabricante</label> -->
+<!-- 			</div> -->
+<!-- 			<div style="float: none;width: auto;overflow: hidden;"> -->
+<%-- 				<input name="nombre" value="<%= optProd.get().getCodigo_fabricante() %>"/> --%>
+<!-- 			</div>  -->
+<!-- 		</div> -->
 		
 		<% 	} else { %>
 			

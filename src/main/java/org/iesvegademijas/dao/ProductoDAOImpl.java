@@ -38,9 +38,11 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
             	producto.setCodigo(rsGenKeys.getInt(1));
                       
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("FALLO DE SQL");
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println("NO ENCUENTRA LA CLASE");
 		} finally {
             closeDb(conn, ps, rs);
         }
@@ -71,8 +73,7 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
             	int idx = 1;
             	prod.setCodigo(rs.getInt(idx++));
             	prod.setNombre(rs.getString(idx++));
-            	prod.setPrecio(rs.getDouble(idx++));
-            	prod.setCodigo_fabricante(rs.getInt(idx));
+            	prod.setPrecio(rs.getDouble(idx));
             	listProd.add(prod);
             }
           
@@ -112,9 +113,7 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
         		idx = 1;
         		prod.setCodigo(rs.getInt(idx++));
         		prod.setNombre(rs.getString(idx));
-        		prod.setPrecio(rs.getDouble(idx++));
-        		prod.setCodigo_fabricante(rs.getInt(idx++));
-        		prod.setCodigo(rs.getInt(idx));
+        		prod.setPrecio(rs.getDouble(idx));
         		
         		return Optional.of(prod);
         	}
