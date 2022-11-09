@@ -38,11 +38,9 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
             	producto.setCodigo(rsGenKeys.getInt(1));
                       
 		} catch (SQLException e) {
-//			e.printStackTrace();
-			System.out.println("FALLO DE SQL");
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			//e.printStackTrace();
-			System.out.println("NO ENCUENTRA LA CLASE");
+			e.printStackTrace();
 		} finally {
             closeDb(conn, ps, rs);
         }
@@ -112,8 +110,9 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
         		Producto prod = new Producto();
         		idx = 1;
         		prod.setCodigo(rs.getInt(idx++));
-        		prod.setNombre(rs.getString(idx));
-        		prod.setPrecio(rs.getDouble(idx));
+        		prod.setNombre(rs.getString(idx++));
+        		prod.setPrecio(rs.getDouble(idx++));
+        		prod.setCodigo_fabricante(rs.getInt(idx));
         		
         		return Optional.of(prod);
         	}
@@ -142,9 +141,10 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
         try {
         	conn = connectDB();
         	
-        	ps = conn.prepareStatement("UPDATE producto SET nombre = ?  WHERE codigo = ?");
+        	ps = conn.prepareStatement("UPDATE producto SET (nombre = ?, precio = ?)  WHERE codigo = ?");
         	int idx = 1;
         	ps.setString(idx++, producto.getNombre());
+        	ps.setDouble(idx++, producto.getPrecio());
         	ps.setInt(idx, producto.getCodigo());
         	
         	int rows = ps.executeUpdate();
