@@ -24,10 +24,12 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
         try {
         	conn = connectDB();
 
-        	ps = conn.prepareStatement("INSERT INTO producto (nombre) VALUES (?)", Statement.RETURN_GENERATED_KEYS);
+        	ps = conn.prepareStatement("INSERT INTO producto (nombre, precio, codigo_fabricante) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             
             int idx = 1;
             ps.setString(idx++, producto.getNombre());
+            ps.setDouble(idx++, producto.getPrecio());
+            ps.setInt(idx, producto.getCodigo_fabricante());
                    
             int rows = ps.executeUpdate();
             if (rows == 0) 
@@ -141,7 +143,7 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
         try {
         	conn = connectDB();
         	
-        	ps = conn.prepareStatement("UPDATE producto SET (nombre = ?, precio = ?)  WHERE codigo = ?");
+        	ps = conn.prepareStatement("UPDATE producto SET nombre = ?, precio = ?  WHERE codigo = ?");
         	int idx = 1;
         	ps.setString(idx++, producto.getNombre());
         	ps.setDouble(idx++, producto.getPrecio());
