@@ -14,6 +14,9 @@ import org.iesvegademijas.dao.FabricanteDAOImpl;
 import org.iesvegademijas.dto.FabricanteDTO;
 import org.iesvegademijas.model.Fabricante;
 
+import java.util.stream.Stream;
+import static java.util.stream.Collectors.*;
+
 public class FabricantesServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -41,11 +44,13 @@ public class FabricantesServlet extends HttpServlet {
 			//	/fabricantes/
 			//	/fabricantes
 			
-			var lfabDTO = fabDAO.getAll().stream().map(f -> {
-				FabricanteDTO fDTO = new FabricanteDTO(f);
-				fDTO.setNumero_productos(fabDAO.getCountProductos(f.getCodigo()));
-				return fDTO;
-			});
+			var lfabDTO = fabDAO.getAll()
+					.stream()
+					.map(f -> {
+						FabricanteDTO fDTO = new FabricanteDTO(f);
+						fDTO.setNumero_productos(fabDAO.getCountProductos(f.getCodigo()));
+						return fDTO;
+					}).collect(toList());
 			
 			request.setAttribute("listaFabricantes", lfabDTO);
 			

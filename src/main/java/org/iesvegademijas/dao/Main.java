@@ -6,7 +6,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		FabricanteDAOImpl fabDao = new FabricanteDAOImpl();
 		
-		System.out.println(fabDao.getCountProductos(3));
+		System.out.println(fabDao.getCountProductos(2).get());
 		
 	}
 

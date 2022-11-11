@@ -58,7 +58,7 @@
 		<div style="margin-top: 6px;" class="clearfix">
 			<div style="float: left;width: 25%"><%= fabricante.getCodigo()%></div>
 			<div style="float: left;width: 25%"><%= fabricante.getNombre()%></div>
-			<div style="float: left;width: 25%"><%= fabricante.getNumero_productos()%></div>
+			<div style="float: left;width: 25%"><%= fabricante.getNumero_productos().get()%></div>
 			<div style="float: none;width: auto;overflow: hidden;">
 				<form action="/tienda_informatica/fabricantes/<%= fabricante.getCodigo()%>" style="display: inline;">
     				<input type="submit" value="Ver Detalle" />

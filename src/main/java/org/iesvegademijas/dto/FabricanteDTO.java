@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.iesvegademijas.model.*;
 
 public class FabricanteDTO extends Fabricante{
+	
 	private Optional<Integer> numero_productos;
 
 	public FabricanteDTO(Fabricante f) {
