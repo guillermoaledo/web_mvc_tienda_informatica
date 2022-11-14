@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.iesvegademijas.dto.FabricanteDTO;
 import org.iesvegademijas.model.Fabricante;
 
 public class FabricanteDAOImpl extends AbstractDAOImpl implements FabricanteDAO{
@@ -233,5 +234,40 @@ public class FabricanteDAOImpl extends AbstractDAOImpl implements FabricanteDAO{
 
 		return Optional.empty();
 	}
+	
+	public List<FabricanteDTO> getAIIDTOPlusCountProductos() {
+		Connection conn = null;
+		Statement s = null;
+        ResultSet rs = null;
+        
+        List<FabricanteDTO> listFab = new ArrayList<>(); 
+        
+        try {
+        	conn = connectDB();
+
+        	// Se utiliza un objeto Statement dado que no hay parámetros en la consulta.
+        	s = conn.createStatement();
+            		
+        	rs = s.executeQuery("select f.*, count(p.codigo_fabricante) from fabricante f join producto p on p.codigo_fabricante = f.codigo group by f.codigo");          
+            while (rs.next()) {
+            	FabricanteDTO fab = new FabricanteDTO(new Fabricante());
+            	int idx = 1;
+            	fab.setCodigo(rs.getInt(idx++));
+            	fab.setNombre(rs.getString(idx++));
+            	fab.setNumero_productos_int(rs.getInt(idx));
+            	listFab.add(fab);
+            }
+          
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+            closeDb(conn, s, rs);
+        }
+        return listFab;
+        
+	}
+	
 
 }
