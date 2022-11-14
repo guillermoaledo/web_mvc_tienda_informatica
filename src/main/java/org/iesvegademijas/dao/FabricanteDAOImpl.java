@@ -236,6 +236,7 @@ public class FabricanteDAOImpl extends AbstractDAOImpl implements FabricanteDAO{
 	}
 	
 	public List<FabricanteDTO> getAIIDTOPlusCountProductos() {
+		
 		Connection conn = null;
 		Statement s = null;
         ResultSet rs = null;
@@ -248,7 +249,7 @@ public class FabricanteDAOImpl extends AbstractDAOImpl implements FabricanteDAO{
         	// Se utiliza un objeto Statement dado que no hay parámetros en la consulta.
         	s = conn.createStatement();
             		
-        	rs = s.executeQuery("select f.*, count(p.codigo_fabricante) from fabricante f join producto p on p.codigo_fabricante = f.codigo group by f.codigo");          
+        	rs = s.executeQuery("select f.*, count(p.codigo_fabricante) from fabricante f left outer join producto p on p.codigo_fabricante = f.codigo group by f.codigo");          
             while (rs.next()) {
             	FabricanteDTO fab = new FabricanteDTO(new Fabricante());
             	int idx = 1;
