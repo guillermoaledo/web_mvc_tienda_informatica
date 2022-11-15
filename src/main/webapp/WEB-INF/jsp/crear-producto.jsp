@@ -53,7 +53,7 @@
 				</div>
 			</div>
 			<div style="margin-top: 6px;" class="clearfix">
-				<div style="float: left; width: 50%">Codigo fabricante</div>
+				<div style="float: left; width: 50%">Fabricante</div>
 				<select name="codigo_fabricante">
 					<%
 					if (request.getAttribute("listaFabricantes") != null) {
