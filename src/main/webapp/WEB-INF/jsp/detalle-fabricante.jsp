@@ -59,7 +59,7 @@
 				<input value="<%= optFab.get().getNombre() %>" readonly="readonly"/>
 			</div> 
 		</div>
-		
+
 		<% 	} else { %>
 			
 				request.sendRedirect("fabricantes/");

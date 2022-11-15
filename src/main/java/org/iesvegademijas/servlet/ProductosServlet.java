@@ -38,10 +38,14 @@ public class ProductosServlet extends HttpServlet {
 			String[] pathParts = pathInfo.split("/");
 			
 			if (pathParts.length == 2 && "crear".equals(pathParts[1])) {
-				
+				ProductoDAO prodDAO = new ProductoDAOImpl();
 				// GET
 				// /productos/create									
 				dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/crear-producto.jsp");
+				
+				var lfab = prodDAO.getFabricantes();
+				
+				request.setAttribute("listaFabricantes", lfab);
         												
 			
 			} else if (pathParts.length == 2) {

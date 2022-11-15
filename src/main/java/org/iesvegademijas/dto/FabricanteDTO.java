@@ -32,7 +32,7 @@ public class FabricanteDTO extends Fabricante{
 	
 	
 	public String toString() {
-		String result = super.toString() + " Numero de productos: " + this.numero_productos_int;
+		String result = super.toString() + " Numero de productos: " + this.numero_productos_int +"\n";
 		
 		return result;
 	}

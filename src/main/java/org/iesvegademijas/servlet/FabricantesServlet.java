@@ -44,6 +44,7 @@ public class FabricantesServlet extends HttpServlet {
 			//	/fabricantes/
 			//	/fabricantes
 			
+			/*
 			var lfabDTO = fabDAO.getAll()
 					.stream()
 					.map(f -> {
@@ -51,6 +52,8 @@ public class FabricantesServlet extends HttpServlet {
 						fDTO.setNumero_productos(fabDAO.getCountProductos(f.getCodigo()));
 						return fDTO;
 					}).collect(toList());
+			*/
+			var lfabDTO = fabDAO.getAIIDTOPlusCountProductos();
 			
 			request.setAttribute("listaFabricantes", lfabDTO);
 			
