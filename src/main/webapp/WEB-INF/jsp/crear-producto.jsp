@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Detalle Producto</title>
+<title>Crear Producto</title>
 <style>
 .clearfix::after {
 	content: "";
@@ -53,24 +53,25 @@
 				</div>
 			</div>
 			<div style="margin-top: 6px;" class="clearfix">
+				
 				<div style="float: left; width: 50%">Fabricante</div>
-				<select name="codigo_fabricante">
-					<%
-					if (request.getAttribute("listaFabricantes") != null) {
-						List<Fabricante> listaFabricante = (List<Fabricante>) request.getAttribute("listaFabricantes");
+					<select name="codigo_fabricante">
+						<%
+						if (request.getAttribute("listaFabricantes") != null) {
+							List<Fabricante> listaFabricante = (List<Fabricante>) request.getAttribute("listaFabricantes");
 
-						for (Fabricante fabricante : listaFabricante) {
-					%>
-					<option style="margin-top: 6px;" class="clearfix"
-						value="<%=fabricante.getCodigo()%>"><%=fabricante.getNombre()%></option>
+							for (Fabricante fabricante : listaFabricante) {
+						%>
+						<option style="margin-top: 6px;" class="clearfix"
+							value="<%=fabricante.getCodigo()%>"><%=fabricante.getNombre()%></option>
 
-					<%
-					}
-					} else {
-					%> No hay registros de fabricante
-					<%
-					}
-					%>
+						<%
+							}
+						} else {
+						%> 	No hay registros de fabricante
+						<%
+						}
+						%>
 
 				</select>
 			</div>

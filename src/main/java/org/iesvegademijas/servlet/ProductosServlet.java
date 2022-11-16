@@ -2,6 +2,7 @@ package org.iesvegademijas.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Optional;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.iesvegademijas.dao.FabricanteDAO;
+import org.iesvegademijas.dao.FabricanteDAOImpl;
 import org.iesvegademijas.dao.ProductoDAO;
 import org.iesvegademijas.dao.ProductoDAOImpl;
+import org.iesvegademijas.model.Fabricante;
 import org.iesvegademijas.model.Producto;
 
 //@WebServlet("/productos/*") 
@@ -50,10 +54,14 @@ public class ProductosServlet extends HttpServlet {
 			
 			} else if (pathParts.length == 2) {
 				ProductoDAO prodDAO = new ProductoDAOImpl();
+				FabricanteDAO fabDao = new FabricanteDAOImpl();
 				// GET
 				// /productos/{id}
 				try {
 					request.setAttribute("producto",prodDAO.find(Integer.parseInt(pathParts[1])));
+					
+					request.setAttribute("fabricante", fabDao.find(prodDAO.find(Integer.parseInt(pathParts[1])).get().getCodigo_fabricante()));
+					
 					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/detalle-producto.jsp");
 					        								
 				} catch (NumberFormatException nfe) {

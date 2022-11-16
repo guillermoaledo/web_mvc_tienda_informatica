@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="org.iesvegademijas.model.Producto"%>
+<%@page import="org.iesvegademijas.model.Fabricante"%>
+<%@page import="org.iesvegademijas.dao.FabricanteDAOImpl"%>
 <%@page import="java.util.Optional"%>
 <!DOCTYPE html>
 <html>
@@ -40,7 +42,9 @@
 		</div>
 		
 		<% 	Optional<Producto> optProd = (Optional<Producto>)request.getAttribute("producto");
-			if (optProd.isPresent()) {
+			Optional<Fabricante> optFab = (Optional<Fabricante>) request.getAttribute("fabricante");
+			if (optProd.isPresent()) {	
+				
 		%>
 		
 		<div style="margin-top: 6px;" class="clearfix">
@@ -69,10 +73,10 @@
 		</div>
 		<div style="margin-top: 6px;" class="clearfix">
 			<div style="float: left;width: 50%">
-				<label>Codigo Fabricante</label>
+				<label>Fabricante</label>
 			</div>
 			<div style="float: none;width: auto;overflow: hidden;">
-				<input value="<%= optProd.get().getCodigo_fabricante() %>" readonly="readonly"/>
+				<input value="<%= optFab.get().getNombre() %>" readonly="readonly"/>
 			</div> 
 		</div>
 		
