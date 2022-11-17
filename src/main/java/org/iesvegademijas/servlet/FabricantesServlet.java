@@ -81,7 +81,7 @@ public class FabricantesServlet extends HttpServlet {
 				}
 			}
 			*/
-			String ordenarPor = (request.getParameter("ordenar-por") != null) ? request.getParameter("ordenar-por"): "codigo";
+			String ordenarPor = (request.getParameter("ordenar-por") != null) ? request.getParameter("ordenar-por") : "codigo";
 			String modoOrdenar = (request.getParameter("modo") != null) ? request.getParameter("modo") : "asc";
 			
 			request.setAttribute("ordenar-por", ordenarPor);
