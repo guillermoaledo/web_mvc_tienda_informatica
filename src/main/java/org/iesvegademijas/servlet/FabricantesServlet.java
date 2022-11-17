@@ -55,7 +55,26 @@ public class FabricantesServlet extends HttpServlet {
 			*/
 			var lfabDTO = fabDAO.getAIIDTOPlusCountProductos();
 			
+			String ordenarPor = request.getParameter("ordenar-por");
+			String modoOrdenar = request.getParameter("modo");
+			if(ordenarPor != null) {
+				if(ordenarPor.equals("nombre")) {
+					if(modoOrdenar.equals("desc")) {
+						lfabDTO.sort((f1, f2) -> f2.getNombre().compareTo(f1.getNombre()));
+					} else {
+						lfabDTO.sort((f1, f2) -> f1.getNombre().compareTo(f2.getNombre()));
+					}
+				} else {
+					if(modoOrdenar.equals("desc")) {
+						lfabDTO.sort((f1, f2) -> (f2.getCodigo())- (f1.getCodigo()));
+					} else {
+						lfabDTO.sort((f1, f2) -> (f1.getCodigo()) - (f2.getCodigo()));
+					}
+				}
+			}
+			
 			request.setAttribute("listaFabricantes", lfabDTO);
+			
 			
 			dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/fabricantes.jsp");
 			        		       
