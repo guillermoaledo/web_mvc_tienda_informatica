@@ -33,6 +33,40 @@
 					<form action="/tienda_informatica/fabricantes/crear">
 						<input type="submit" value="Crear">
 					</form>
+
+					<form action="/tienda_informatica/fabricantes/" method="get">
+						<select name="ordenar-por">
+							<%
+							if (request.getAttribute("ordenar-por").equals("nombre")) {
+							%>
+							<option value="nombre" selected>Nombre</option>
+							<option value="codigo">Codigo</option>
+							<%
+							} else if (request.getAttribute("ordenar-por").equals("codigo")){
+							%>
+							<option value="nombre">Nombre</option>
+							<option value="codigo" selected>Codigo</option>
+							<%
+							}
+							%>
+						</select>
+						<select name="modo">
+							<%
+							if (request.getAttribute("modo").equals("asc")) {
+							%>
+							<option value="asc" selected>Ascendente</option>
+							<option value="desc">Descendente</option>
+							<%
+							} else if (request.getAttribute("modo").equals("desc")){
+							%>
+							<option value="asc">Ascendente</option>
+							<option value="desc" selected>Descendente</option>
+							<%
+							}
+							%>
+						</select> <input type="submit" value="ordenar">
+					</form>
+
 				</div>
 
 			</div>
@@ -88,16 +122,8 @@
 		<%
 		}
 		%>
-		
-		<form action="/tienda-informatica/fabricantes" method="get">
-			<select name="ordenar-por">
-				<option value="nombre">Nombre</option>
-				<option value="codigo">Codigo</option>
-			</select> <select name="modo">
-				<option value="asc">Ascendente</option>
-				<option value="desc">Descendente</option>
-			</select> <input type="submit" value="ordenar">
-		</form>
+
+
 	</div>
 
 </body>

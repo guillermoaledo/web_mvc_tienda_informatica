@@ -53,27 +53,41 @@ public class FabricantesServlet extends HttpServlet {
 						return fDTO;
 					}).collect(toList());
 			*/
+			
+			/*
 			var lfabDTO = fabDAO.getAIIDTOPlusCountProductos();
 			
 			String ordenarPor = request.getParameter("ordenar-por");
 			String modoOrdenar = request.getParameter("modo");
+			
+			request.setAttribute("ordenar-por", ordenarPor);
+			request.setAttribute("modo", modoOrdenar);
+			
+			var listaOrdenada = lfabDTO;
+			
 			if(ordenarPor != null) {
 				if(ordenarPor.equals("nombre")) {
 					if(modoOrdenar.equals("desc")) {
-						lfabDTO.sort((f1, f2) -> f2.getNombre().compareTo(f1.getNombre()));
+						listaOrdenada.sort((f1, f2) -> f2.getNombre().compareTo(f1.getNombre()));
 					} else {
-						lfabDTO.sort((f1, f2) -> f1.getNombre().compareTo(f2.getNombre()));
+						listaOrdenada.sort((f1, f2) -> f1.getNombre().compareTo(f2.getNombre()));
 					}
 				} else {
 					if(modoOrdenar.equals("desc")) {
-						lfabDTO.sort((f1, f2) -> (f2.getCodigo())- (f1.getCodigo()));
+						listaOrdenada.sort((f1, f2) -> (f2.getCodigo())- (f1.getCodigo()));
 					} else {
-						lfabDTO.sort((f1, f2) -> (f1.getCodigo()) - (f2.getCodigo()));
+						listaOrdenada.sort((f1, f2) -> (f1.getCodigo()) - (f2.getCodigo()));
 					}
 				}
 			}
+			*/
+			String ordenarPor = (request.getParameter("ordenar-por") != null) ? request.getParameter("ordenar-por"): "codigo";
+			String modoOrdenar = (request.getParameter("modo") != null) ? request.getParameter("modo") : "asc";
 			
-			request.setAttribute("listaFabricantes", lfabDTO);
+			request.setAttribute("ordenar-por", ordenarPor);
+			request.setAttribute("modo", modoOrdenar);
+			
+			request.setAttribute("listaFabricantes", fabDAO.getAllFabOrdenados(ordenarPor, modoOrdenar));
 			
 			
 			dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/fabricantes.jsp");
