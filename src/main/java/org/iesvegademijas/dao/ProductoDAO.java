@@ -18,5 +18,7 @@ public interface ProductoDAO {
 	public void delete(int id);
 	
 	public List<Fabricante> getFabricantes();
+	
+	public List<Producto> buscarPorNombre(List<Producto> lista, String cadena);
 
 }

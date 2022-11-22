@@ -32,6 +32,12 @@
 						<form action="/tienda_informatica/productos/crear">
 							<input type="submit" value="Crear">
 						</form>
+						
+						<form action="/tienda_informatica/productos/" method="get"> 
+							<input name="filtrar-por">
+							<input type="submit" value="Buscar">
+						
+						</form>
 					</div>
 				
 			</div>

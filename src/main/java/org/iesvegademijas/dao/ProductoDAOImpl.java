@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import java.util.stream.Stream;
+import static java.util.stream.Collectors.*;
+
 import org.iesvegademijas.dto.FabricanteDTO;
 import org.iesvegademijas.model.Fabricante;
 import org.iesvegademijas.model.Producto;
@@ -232,6 +235,53 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO {
 		}
 		return listFab;
 
+	}
+
+	@Override
+	public List<Producto> buscarPorNombre(List<Producto> lista, String cadena) {
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		List<Producto> listProd = new ArrayList<>();
+		
+
+		try {
+			conn = connectDB();
+
+			if(cadena.equals("")) {
+				ps = conn.prepareStatement("SELECT * FROM producto");
+				
+			}else {	
+				cadena = cadena + "*";
+				ps = conn.prepareStatement("SELECT * FROM producto WHERE MATCH(nombre) AGAINST(? in boolean mode)");
+				int idx = 1;
+				
+				ps.setString(idx, cadena);
+			}
+			
+
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				Producto prod = new Producto();
+				int idx = 1;
+				prod.setCodigo(rs.getInt(idx++));
+				prod.setNombre(rs.getString(idx++));
+				prod.setPrecio(rs.getDouble(idx));
+				listProd.add(prod);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			closeDb(conn, ps, rs);
+		}
+		return listProd;
+		
 	}
 
 }

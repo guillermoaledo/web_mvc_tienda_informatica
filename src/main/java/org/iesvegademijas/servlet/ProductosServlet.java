@@ -33,8 +33,19 @@ public class ProductosServlet extends HttpServlet {
 		if (pathInfo == null || "/".equals(pathInfo)) {
 			ProductoDAO prodDAO = new ProductoDAOImpl();
 			
-			request.setAttribute("listaProductos", prodDAO.getAll());		
+			var listProd = prodDAO.getAll();
+			
+			String filtrarPor = (request.getParameter("filtrar-por") != null) ? request.getParameter("filtrar-por") : "";
+			
+			filtrarPor = filtrarPor.toLowerCase();
+			
+			listProd = prodDAO.buscarPorNombre(listProd, filtrarPor);
+			
+			request.setAttribute("listaProductos",listProd);		
+			
+			
 			dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/productos.jsp");
+			
 			        		       
 		} else {
 			
