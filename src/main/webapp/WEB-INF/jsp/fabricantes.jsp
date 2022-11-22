@@ -17,8 +17,9 @@
 </style>
 </head>
 <body>
-<body>
-
+<%@include file="/WEB-INF/jsp/style.jspf" %>
+	<%@include file="/WEB-INF/jsp/header.jspf" %>
+	<%@include file="/WEB-INF/jsp/nav.jspf" %>
 	<div id="contenedora"
 		style="float: none; margin: 0 auto; width: 900px;">
 		<div class="clearfix">
@@ -125,7 +126,6 @@
 
 
 	</div>
-
-</body>
+	<%@include file="/WEB-INF/jsp/footer.jspf"%>
 </body>
 </html>

@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Tienda Informatica</title>
-	<style>
+<style>
 		.head1 {
 			font-size:40px;
 			color:#009900;
@@ -56,24 +52,3 @@
 			margin-left:20px;
 		}
 	</style>
-</head>
-
-<body>
-	
-	<!-- Header Section -->
-	<%@include file="/WEB-INF/jsp/header.jspf" %>
-	
-	<!-- Menu Navigation Bar -->
-	<%@include file="/WEB-INF/jsp/nav.jspf" %>
-	
-	<!-- Body section -->
-	<main class = "body_sec">
-		<section id="Content">
-			<h3>Content section</h3>
-		</section>
-	</main>
-	
-	<!-- Footer Section -->
-	<%@include file="/WEB-INF/jsp/footer.jspf" %>
-</body>
-</html>
