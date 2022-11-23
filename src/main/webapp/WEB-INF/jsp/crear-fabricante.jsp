@@ -17,7 +17,9 @@
 </style>
 </head>
 <body>
-
+	<%@include file="/WEB-INF/jsp/style.jspf"%>
+	<%@include file="/WEB-INF/jsp/header.jspf"%>
+	<%@include file="/WEB-INF/jsp/nav.jspf"%>
 <div id="contenedora" style="float:none; margin: 0 auto;width: 900px;" >
 	<form action="/tienda_informatica/fabricantes/crear/" method="post">
 		<div class="clearfix">
@@ -48,6 +50,6 @@
 
 	</form>
 </div>
-
+	<%@include file="/WEB-INF/jsp/footer.jspf"%>
 </body>
 </html>
