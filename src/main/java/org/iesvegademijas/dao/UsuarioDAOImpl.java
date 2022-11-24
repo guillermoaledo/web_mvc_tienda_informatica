@@ -95,7 +95,7 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
 		try {
 			conn = connectDB();
 
-			ps = conn.prepareStatement("SELECT * FROM usuario WHERE codigo = ?");
+			ps = conn.prepareStatement("SELECT * FROM usuario WHERE id = ?");
 
 			int idx = 1;
 			ps.setInt(idx, id);
@@ -133,9 +133,10 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
 		try {
 			conn = connectDB();
 
-			ps = conn.prepareStatement("UPDATE usuario SET usuario = ? WHERE codigo = ?");
+			ps = conn.prepareStatement("UPDATE usuario SET usuario = ?, rol = ? WHERE id = ?");
 			int idx = 1;
 			ps.setString(idx++, usuario.getUsuario());
+			ps.setString(idx++, usuario.getRol());
 			ps.setInt(idx, usuario.getId());
 
 			int rows = ps.executeUpdate();
@@ -163,7 +164,7 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
 		try {
 			conn = connectDB();
 
-			ps = conn.prepareStatement("DELETE FROM usuario WHERE codigo = ?");
+			ps = conn.prepareStatement("DELETE FROM usuario WHERE id = ?");
 			int idx = 1;
 			ps.setInt(idx, id);
 

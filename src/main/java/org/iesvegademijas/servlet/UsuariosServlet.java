@@ -2,6 +2,7 @@ package org.iesvegademijas.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
 
 import javax.servlet.RequestDispatcher;
@@ -18,7 +19,7 @@ import org.iesvegademijas.model.Producto;
 import org.iesvegademijas.model.Usuario;
 
 
-public class UsuarioServlet extends HttpServlet{
+public class UsuariosServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 
@@ -108,6 +109,12 @@ public class UsuarioServlet extends HttpServlet{
 			
 			String usuario = request.getParameter("usuario");
 			String password = request.getParameter("password");
+			try {
+				password = Usuario.hashPassword(password);
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			String rol = request.getParameter("rol");
 			
 			try {

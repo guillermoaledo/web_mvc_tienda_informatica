@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Productos</title>
+<title>Usuarios</title>
 <style>
 .clearfix::after {
 	content: "";
@@ -25,21 +25,15 @@
 		style="float: none; margin: 0 auto; width: 900px;">
 		<div class="clearfix">
 			<div style="float: left; width: 50%">
-				<h1>Productos</h1>
+				<h1>Usuarios</h1>
 			</div>
 			<div
 				style="float: none; width: auto; overflow: hidden; min-height: 80px; position: relative;">
 
 				<div style="position: absolute; left: 39%; top: 39%;">
 
-					<form action="/tienda_informatica/productos/crear">
+					<form action="/tienda_informatica/usuarios/crear">
 						<input type="submit" value="Crear">
-					</form>
-
-					<form action="/tienda_informatica/productos/" method="get">
-						<input name="filtrar-por"> <input type="submit"
-							value="Buscar">
-
 					</form>
 				</div>
 
@@ -49,40 +43,40 @@
 			<hr />
 		</div>
 		<div class="clearfix">
-			<div style="float: left; width: 20%">Código</div>
-			<div style="float: left; width: 30%">Nombre</div>
-			<div style="float: left; width: 25%">Precio</div>
+			<div style="float: left; width: 20%">Id</div>
+			<div style="float: left; width: 20%">Usuario</div>
+			<div style="float: left; width: 20%">Rol</div>
 			<div style="float: none; width: auto; overflow: hidden;">Acción</div>
 		</div>
 		<div class="clearfix">
 			<hr />
 		</div>
 		<%
-		if (request.getAttribute("listaProductos") != null) {
-			List<Producto> listaProducto = (List<Producto>) request.getAttribute("listaProductos");
+		if (request.getAttribute("listaUsuarios") != null) {
+			List<Usuario> listaUsuario = (List<Usuario>) request.getAttribute("listaUsuarios");
 
-			for (Producto producto : listaProducto) {
+			for (Usuario usuario : listaUsuario) {
 		%>
 
 		<div style="margin-top: 6px;" class="clearfix">
-			<div style="float: left; width: 20%"><%=producto.getCodigo()%></div>
-			<div style="float: left; width: 30%"><%=producto.getNombre()%></div>
-			<div style="float: left; width: 25%"><%=Math.round(producto.getPrecio() * 100.0) / 100.0%></div>
+			<div style="float: left; width: 20%"><%=usuario.getId()%></div>
+			<div style="float: left; width: 20%"><%=usuario.getUsuario()%></div>
+			<div style="float: left; width: 20%"><%=usuario.getRol()%></div>
 			<div style="float: none; width: auto; overflow: hidden;">
 				<form
-					action="/tienda_informatica/productos/<%=producto.getCodigo()%>"
+					action="/tienda_informatica/usuarios/<%=usuario.getId()%>"
 					style="display: inline;">
 					<input type="submit" value="Ver Detalle" />
 				</form>
 				<form
-					action="/tienda_informatica/productos/editar/<%=producto.getCodigo()%>"
+					action="/tienda_informatica/usuarios/editar/<%=usuario.getId()%>"
 					style="display: inline;">
 					<input type="submit" value="Editar" />
 				</form>
-				<form action="/tienda_informatica/productos/borrar/" method="post"
+				<form action="/tienda_informatica/usuarios/borrar/" method="post"
 					style="display: inline;">
 					<input type="hidden" name="__method__" value="delete" /> <input
-						type="hidden" name="codigo" value="<%=producto.getCodigo()%>" />
+						type="hidden" name="id" value="<%=usuario.getId()%>" />
 					<input type="submit" value="Eliminar" />
 				</form>
 			</div>
@@ -92,7 +86,7 @@
 		}
 		} else {
 		%>
-		No hay registros de producto
+		No hay registros de usuario
 		<%
 		}
 		%>

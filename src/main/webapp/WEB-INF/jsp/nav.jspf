@@ -1,7 +1,8 @@
 <nav class="menu">
 		<a href="index.jsp">HOME</a>
 		<a href="/tienda_informatica/fabricantes">Frabricantes</a>
-		<a href="/tienda_informatica/productos">Producto</a>
+		<a href="/tienda_informatica/productos">Productos</a>
+		<a href="/tienda_informatica/usuarios">Usuarios</a>
 		<div class="menu-log">
 			<a href="#login">LOGIN</a>
 		</div>
