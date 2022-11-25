@@ -13,6 +13,8 @@ public interface UsuarioDAO {
 	public List<Usuario> getAll();
 	public Optional<Usuario>  find(int id);
 	
+	public Optional<Usuario> findUsu(String usuario);
+	
 	public void update(Usuario usuario);
 	
 	public void delete(int id);

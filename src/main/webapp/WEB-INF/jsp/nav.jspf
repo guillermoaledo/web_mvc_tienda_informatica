@@ -1,9 +1,16 @@
 <nav class="menu">
-		<a href="index.jsp">HOME</a>
+		<a href="/tienda_informatica/index.jsp">HOME</a>
 		<a href="/tienda_informatica/fabricantes">Frabricantes</a>
 		<a href="/tienda_informatica/productos">Productos</a>
 		<a href="/tienda_informatica/usuarios">Usuarios</a>
 		<div class="menu-log">
-			<a href="#login">LOGIN</a>
+		
+		<%if(request.getSession().getAttribute("usuario-logado") != null){ %>
+			<form action="/tienda_informatica/usuarios/logout" method="POST">
+				<input type="submit" value="Logout">
+			</form>
+		<%} else {%>
+			<a href="/tienda_informatica/usuarios/login">LOGIN</a>
+		<%} %>
 		</div>
 </nav>
